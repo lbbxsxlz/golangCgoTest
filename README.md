@@ -11,3 +11,9 @@ ar rcs libelfsection.a elf_section.o
 ```
 
 然后在go代码中使用cgo语句链接静态库
+
+## 链接C语言动态库
+```
+gcc -shared -fPIC -o libelfsection.so elf_section.c 
+```
+然后在go代码中使用cgo语句链接静态库
