@@ -16,6 +16,7 @@ ar rcs libelfsection.a elf_section.o
 ```
 详见[代码](linkStaticLib/elf.go)
 
+
 ## 链接C语言动态库
 ```
 gcc -shared -fPIC -o libelfsection.so elf_section.c 
@@ -25,4 +26,10 @@ gcc -shared -fPIC -o libelfsection.so elf_section.c
 //cgo LDFLAGS: -L amd64 -lelfsection
 ```
 详见[代码](linkDynamicLib/elf.go)
+
+## 编译
+进入对应的目录，go build即可，例如
+```
+cd codeCompiler; go build
+```
 
