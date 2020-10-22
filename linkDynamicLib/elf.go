@@ -32,7 +32,7 @@ func main() {
 	}
 
 	data := C.GoBytes(ptr, 128)
-	err := ioutil.WriteFile("sonia-uuid.txt", data, 0666)
+	err := ioutil.WriteFile("uuid.txt", data, 0666)
 	if err != nil {
 		log.Fatal("create file fail \n")
 	}
