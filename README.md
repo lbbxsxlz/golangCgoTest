@@ -10,6 +10,22 @@ gcc -c elf_section.c -o elf_section.o
 ar rcs libelfsection.a elf_section.o
 ```
 
+### cmake 方式
+修改CMakeLists.txt文件，将add_library修改成如下：
+```
+add_library(elfsection	
+	STATIC
+	elf_section.c
+)
+
+```
+然后
+```
+mkdir -p build;
+cd build; cmkae ..
+make
+```
+
 然后在go代码中使用cgo语句链接静态库，如下，但必须在注释段中
 ```
 #cgo LDFLAGS: -L. amd64/libelfsection.a
@@ -21,6 +37,23 @@ ar rcs libelfsection.a elf_section.o
 ```
 gcc -shared -fPIC -o libelfsection.so elf_section.c 
 ```
+
+### cmake 方式
+修改CMakeLists.txt文件，将add_library修改成如下：
+```
+add_library(elfsection
+        SHARED
+        elf_section.c
+)
+
+```
+然后
+```
+mkdir -p build;
+cd build; cmkae ..
+make
+```
+
 然后在go代码中使用cgo语句链接静态库,如下，但必须包含在注释段中
 ```
 //cgo LDFLAGS: -L amd64 -lelfsection
